@@ -60,6 +60,11 @@ export default {
 					DEFAULT: 'hsl(var(--warning))',
 					foreground: 'hsl(var(--warning-foreground))'
 				},
+				gold: {
+					DEFAULT: 'hsl(var(--gold))',
+					dark: 'hsl(var(--gold-dark))',
+					light: 'hsl(var(--gold-light))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -98,19 +103,35 @@ export default {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.5s ease-out',
-				'slide-up': 'slide-up 0.5s ease-out'
+				'slide-up': 'slide-up 0.5s ease-out',
+				'glow': 'glow 2s ease-in-out infinite alternate',
+				'shimmer': 'shimmer 2s linear infinite'
 			},
 			backgroundImage: {
 				'gradient-primary': 'var(--gradient-primary)',
-				'gradient-success': 'var(--gradient-success)',
-				'gradient-card': 'var(--gradient-card)'
+				'gradient-gold': 'var(--gradient-gold)', 
+				'gradient-premium': 'var(--gradient-premium)',
+				'gradient-card': 'var(--gradient-card)',
+				'gradient-dark': 'var(--gradient-dark)'
 			},
 			boxShadow: {
 				'card': 'var(--shadow-card)',
-				'card-hover': 'var(--shadow-card-hover)'
+				'card-hover': 'var(--shadow-card-hover)',
+				'gold': 'var(--shadow-gold)',
+				'gold-intense': 'var(--shadow-gold-intense)'
 			},
 			transitionProperty: {
 				'smooth': 'var(--transition-smooth)'
+			},
+			keyframes: {
+				'glow': {
+					'0%': { 'box-shadow': '0 0 20px hsl(45 100% 51% / 0.3)' },
+					'100%': { 'box-shadow': '0 0 40px hsl(45 100% 51% / 0.6)' }
+				},
+				'shimmer': {
+					'0%': { 'background-position': '-200% 0' },
+					'100%': { 'background-position': '200% 0' }
+				}
 			}
 		}
 	},

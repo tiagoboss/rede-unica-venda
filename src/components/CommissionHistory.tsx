@@ -17,10 +17,10 @@ interface CommissionHistoryProps {
 
 export function CommissionHistory({ commissions }: CommissionHistoryProps) {
   return (
-    <Card>
+    <Card className="bg-gradient-card border border-border/30">
       <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <DollarSign className="h-5 w-5" />
+        <CardTitle className="flex items-center gap-2 text-foreground">
+          <DollarSign className="h-5 w-5 text-primary" />
           Histórico de Comissões
         </CardTitle>
       </CardHeader>
@@ -36,17 +36,20 @@ export function CommissionHistory({ commissions }: CommissionHistoryProps) {
             {commissions.map((commission) => (
               <div
                 key={commission.id}
-                className="flex items-center justify-between p-4 border rounded-lg bg-gradient-card hover:shadow-card transition-all duration-300"
+                className="flex items-center justify-between p-4 border border-border/30 rounded-lg bg-gradient-premium hover:shadow-card-hover hover:border-primary/30 transition-all duration-300"
               >
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <h4 className="font-medium">{commission.memberName}</h4>
-                    <Badge variant={commission.status === 'paid' ? 'default' : 'secondary'}>
-                      {commission.status === 'paid' ? 'Pago' : 'Pendente'}
+                    <h4 className="font-medium text-foreground">{commission.memberName}</h4>
+                    <Badge 
+                      variant={commission.status === 'paid' ? 'default' : 'secondary'}
+                      className={commission.status === 'paid' ? 'bg-success text-success-foreground' : ''}
+                    >
+                      {commission.status === 'paid' ? '✅ Pago' : '⏳ Pendente'}
                     </Badge>
                   </div>
                   <p className="text-sm text-muted-foreground mb-1">
-                    Pacote: {commission.packageName}
+                    Pacote: <span className="text-foreground">{commission.packageName}</span>
                   </p>
                   <div className="flex items-center gap-1 text-xs text-muted-foreground">
                     <Calendar className="h-3 w-3" />
@@ -54,7 +57,7 @@ export function CommissionHistory({ commissions }: CommissionHistoryProps) {
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="text-lg font-bold text-success">
+                  <div className="text-lg font-bold text-primary">
                     R$ {commission.amount.toLocaleString('pt-BR')}
                   </div>
                 </div>

@@ -155,10 +155,10 @@ const Index = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card>
+        <Card className="bg-gradient-card border border-border/30">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Share2 className="h-5 w-5" />
+            <CardTitle className="flex items-center gap-2 text-foreground">
+              <Share2 className="h-5 w-5 text-primary" />
               Seu Link de Indicação
             </CardTitle>
           </CardHeader>
@@ -167,9 +167,14 @@ const Index = () => {
               <Input 
                 value="https://platform.com/ref/usuario123" 
                 readOnly 
-                className="flex-1"
+                className="flex-1 bg-secondary/50 border-border/50 text-foreground"
               />
-              <Button onClick={handleCopyReferralLink} variant="outline" size="icon">
+              <Button 
+                onClick={handleCopyReferralLink} 
+                variant="outline" 
+                size="icon"
+                className="border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground"
+              >
                 <Copy className="h-4 w-4" />
               </Button>
             </div>
@@ -179,23 +184,23 @@ const Index = () => {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-gradient-premium border border-border/30">
           <CardHeader>
-            <CardTitle>Próximos Pagamentos</CardTitle>
+            <CardTitle className="text-foreground">💰 Próximos Pagamentos</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
               <div className="flex justify-between items-center">
-                <span className="text-sm">Comissões Pendentes</span>
+                <span className="text-sm text-muted-foreground">Comissões Pendentes</span>
                 <span className="font-medium text-warning">R$ 450</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-sm">Próximo Pagamento</span>
-                <span className="font-medium">15/04/2024</span>
+                <span className="text-sm text-muted-foreground">Próximo Pagamento</span>
+                <span className="font-medium text-foreground">15/04/2024</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-sm">Forma de Pagamento</span>
-                <span className="font-medium">PIX</span>
+                <span className="text-sm text-muted-foreground">Forma de Pagamento</span>
+                <span className="font-medium text-primary">💳 PIX</span>
               </div>
             </div>
           </CardContent>
@@ -207,7 +212,7 @@ const Index = () => {
   const renderPackages = () => (
     <div className="space-y-6">
       <div className="text-center">
-        <h2 className="text-2xl font-bold mb-2">Escolha seu Pacote</h2>
+        <h2 className="text-3xl font-bold mb-2 text-foreground">💎 Escolha seu Pacote</h2>
         <p className="text-muted-foreground">
           Selecione o pacote ideal para começar ou expandir seu negócio
         </p>
@@ -242,33 +247,35 @@ const Index = () => {
 
   const renderProfile = () => (
     <div className="space-y-6">
-      <Card>
+      <Card className="bg-gradient-card border border-border/30">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <User className="h-5 w-5" />
-            Meu Perfil
+          <CardTitle className="flex items-center gap-2 text-foreground">
+            <User className="h-5 w-5 text-primary" />
+            👤 Meu Perfil
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="name">Nome Completo</Label>
-              <Input id="name" defaultValue="Usuário Exemplo" />
+              <Label htmlFor="name" className="text-foreground">Nome Completo</Label>
+              <Input id="name" defaultValue="Usuário Exemplo" className="bg-secondary/50 border-border/50 text-foreground" />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" defaultValue="usuario@email.com" />
+              <Label htmlFor="email" className="text-foreground">Email</Label>
+              <Input id="email" type="email" defaultValue="usuario@email.com" className="bg-secondary/50 border-border/50 text-foreground" />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="phone">Telefone</Label>
-              <Input id="phone" defaultValue="(11) 99999-9999" />
+              <Label htmlFor="phone" className="text-foreground">Telefone</Label>
+              <Input id="phone" defaultValue="(11) 99999-9999" className="bg-secondary/50 border-border/50 text-foreground" />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="pix">Chave PIX</Label>
-              <Input id="pix" defaultValue="usuario@email.com" />
+              <Label htmlFor="pix" className="text-foreground">Chave PIX</Label>
+              <Input id="pix" defaultValue="usuario@email.com" className="bg-secondary/50 border-border/50 text-foreground" />
             </div>
           </div>
-          <Button>Salvar Alterações</Button>
+          <Button className="bg-gradient-primary text-primary-foreground hover:shadow-gold-intense border-0">
+            ✨ Salvar Alterações
+          </Button>
         </CardContent>
       </Card>
     </div>
@@ -292,7 +299,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-dark">
       <Navigation currentView={currentView} onViewChange={setCurrentView} />
       <main className="max-w-7xl mx-auto px-4 md:px-6 py-8">
         {renderCurrentView()}

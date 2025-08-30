@@ -31,11 +31,11 @@ export function Navigation({ currentView, onViewChange }: NavigationProps) {
   return (
     <>
       {/* Desktop Navigation */}
-      <nav className="hidden md:flex bg-card border-b px-6 py-4">
+      <nav className="hidden md:flex bg-gradient-dark border-b border-border/30 px-6 py-4 shadow-card">
         <div className="flex items-center justify-between w-full max-w-7xl mx-auto">
           <div className="flex items-center gap-8">
             <div className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-              MLM Platform
+              💎 MLM Platform
             </div>
             <div className="flex items-center gap-1">
               {navigationItems.map((item) => {
@@ -45,7 +45,11 @@ export function Navigation({ currentView, onViewChange }: NavigationProps) {
                     key={item.id}
                     variant={currentView === item.id ? "default" : "ghost"}
                     onClick={() => onViewChange(item.id)}
-                    className="flex items-center gap-2"
+                    className={`flex items-center gap-2 transition-all duration-300 ${
+                      currentView === item.id 
+                        ? 'bg-gradient-primary text-primary-foreground shadow-gold border-0' 
+                        : 'text-foreground hover:text-primary hover:bg-secondary/50'
+                    }`}
                   >
                     <Icon className="h-4 w-4" />
                     {item.label}
@@ -55,11 +59,11 @@ export function Navigation({ currentView, onViewChange }: NavigationProps) {
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <Avatar>
+            <Avatar className="border border-primary/30">
               <AvatarImage src="/placeholder-avatar.jpg" />
-              <AvatarFallback>US</AvatarFallback>
+              <AvatarFallback className="bg-secondary text-secondary-foreground">US</AvatarFallback>
             </Avatar>
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" className="text-foreground hover:text-primary">
               <LogOut className="h-4 w-4" />
             </Button>
           </div>
@@ -67,21 +71,22 @@ export function Navigation({ currentView, onViewChange }: NavigationProps) {
       </nav>
 
       {/* Mobile Navigation */}
-      <nav className="md:hidden bg-card border-b px-4 py-4">
+      <nav className="md:hidden bg-gradient-dark border-b border-border/30 px-4 py-4 shadow-card">
         <div className="flex items-center justify-between">
           <div className="text-lg font-bold bg-gradient-primary bg-clip-text text-transparent">
-            MLM Platform
+            💎 MLM Platform
           </div>
           <Button
             variant="ghost"
             size="icon"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="text-foreground hover:text-primary"
           >
             {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
         </div>
         {isMobileMenuOpen && (
-          <div className="mt-4 space-y-2">
+          <div className="mt-4 space-y-2 bg-gradient-card rounded-lg p-4 border border-border/30">
             {navigationItems.map((item) => {
               const Icon = item.icon;
               return (
@@ -92,21 +97,25 @@ export function Navigation({ currentView, onViewChange }: NavigationProps) {
                     onViewChange(item.id);
                     setIsMobileMenuOpen(false);
                   }}
-                  className="w-full justify-start gap-2"
+                  className={`w-full justify-start gap-2 transition-all duration-300 ${
+                    currentView === item.id 
+                      ? 'bg-gradient-primary text-primary-foreground shadow-gold border-0' 
+                      : 'text-foreground hover:text-primary hover:bg-secondary/50'
+                  }`}
                 >
                   <Icon className="h-4 w-4" />
                   {item.label}
                 </Button>
               );
             })}
-            <div className="pt-4 border-t">
+            <div className="pt-4 border-t border-border/30">
               <div className="flex items-center gap-3 px-3 py-2">
-                <Avatar>
+                <Avatar className="border border-primary/30">
                   <AvatarImage src="/placeholder-avatar.jpg" />
-                  <AvatarFallback>US</AvatarFallback>
+                  <AvatarFallback className="bg-secondary text-secondary-foreground">US</AvatarFallback>
                 </Avatar>
-                <span className="font-medium">Usuário</span>
-                <Button variant="ghost" size="icon" className="ml-auto">
+                <span className="font-medium text-foreground">Usuário</span>
+                <Button variant="ghost" size="icon" className="ml-auto text-foreground hover:text-primary">
                   <LogOut className="h-4 w-4" />
                 </Button>
               </div>
